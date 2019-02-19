@@ -30,9 +30,9 @@ public class DateTimeController {
         LocalDate greaterDate = date1.isAfter(date2) ? date1 : date2;
         //licznik poniedzialkow
         int mondayCounter = 0;
-        //inicjalizujemy petle date mniejsza
-        //warunkiem wykonania petli jest sprawdzenie czy data mniejsza nie przekroczyla daty wiekszej
-        //w kroku dodaje 1 dzien
+        //1.inicjalizujemy petle date mniejsza
+        //2.warunkiem wykonania petli jest sprawdzenie czy data mniejsza nie przekroczyla daty wiekszej
+        //3.w kroku dodaje 1 dzien
         for (LocalDate ld = lessDate; ld.isBefore(greaterDate); ld = ld.plusDays(1)){
             if(ld.getDayOfWeek() == DayOfWeek.MONDAY){
                 mondayCounter++;
@@ -40,13 +40,22 @@ public class DateTimeController {
         }
         return mondayCounter;
     }
-
+    public void myBirthday(String d){
+        LocalDate date = LocalDate.parse(d);
+        DayOfWeek myDay = date.getDayOfWeek();
+        for(LocalDate ld = date; ld.isBefore(LocalDate.now()); ld = ld.plusYears(1)){
+            if (ld.getDayOfWeek() == myDay){
+                System.out.println(ld);
+            }
+        }
+    }
 
     public static void main (String[] args){
         DateTimeController dtc = new DateTimeController();
         System.out.println("Twoj wiek dokladny to: " + dtc.getAgeFromStringDate("2000-10-01") + " lat");
         System.out.println("Wczesniejsza data:" + dtc.dateComparator("2000-02-20", "2001-05-05"));
         System.out.println("Wczesniejsza data:" + dtc.dateComparator("2010-02-20", "2001-05-05"));
-        System.out.println("Liczba poniedzialkow miedzy datami:" + dtc.getMondaysBetweenDates("2019-02-19", "2019-03-05"));
+        System.out.println("Liczba poniedzialkow miedzy datami:" + dtc.getMondaysBetweenDates("2019-01-19", "2019-03-05"));
+        dtc.myBirthday("1981-07-25");//sobota
     }
 }
