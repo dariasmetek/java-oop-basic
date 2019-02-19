@@ -20,7 +20,10 @@ public class RegExpController {
         String template2 = "\\d{3}-\\d{3}-\\d{3}";
         return Pattern.matches(template1 + "|" + template2, phone_no);
     }
-
+    public boolean checkEmailAddress(String email){
+        String template = "^[a-zA-Z0-9]*[.]?[a-zA-Z0-9]*[@]{1}[a-zA-Z0-9]*[.]{1}[a-zA-Z0-9]*$";
+        return Pattern.matches(template, email);
+    }
     public static void main(String[] args) {
         RegExpController rec = new RegExpController();
         System.out.println(rec.checkPostalCode("03-032"));
@@ -32,5 +35,6 @@ public class RegExpController {
         System.out.println("phone");
         System.out.println(rec.checkPhoneNo("+48-534-528-162"));
         System.out.println(rec.checkPhoneNo("534-528-162"));
+        System.out.println(rec.checkEmailAddress(("daria.smetek@gmail.com")));
     }
 }
