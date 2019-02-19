@@ -9,6 +9,11 @@ public class RegExpController {
         return Pattern.matches(template, postalCode);
     }
 
+//ddddddddd
+    public boolean checkPesel(String pesel){
+        String template = "\\d{11}";
+        return Pattern.matches(template, pesel);
+    }
 
     public static void main(String[] args) {
         RegExpController rec = new RegExpController();
@@ -16,5 +21,7 @@ public class RegExpController {
         System.out.println(rec.checkPostalCode("0X-032"));
         System.out.println(rec.checkPostalCode("03032"));
         System.out.println(rec.checkPostalCode(" 03-032"));
+        System.out.println(rec.checkPesel("81072506104"));
+        System.out.println(rec.checkPesel("81d72506104"));
     }
 }
