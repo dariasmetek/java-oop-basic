@@ -9,6 +9,7 @@ public class User {
     private LocalDateTime registration_date_time;
 
 
+
     @Override
     public String toString() {
         return "User{" +

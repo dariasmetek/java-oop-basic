@@ -46,6 +46,22 @@ public class UserMain {
                 LocalDate.of(2004, 10, 04),
                 LocalDateTime.now()
         );
+        uc.addUser(
+                "K",
+                "Z",
+                "v",
+                "x",
+                "anna@op.pl",
+                "456321666",
+                LocalDate.of(2007, 05, 04),
+                LocalDateTime.now()
+        );
+        uc.getAllUsers();
+        System.out.println("Test dat");
+        System.out.println("User pierwszy starszy od drugiego: " + uc.birthdateComparator(0,1));
+        System.out.println("User pierwszy starszy od drugiego: " + uc.birthdateComparator(1,2));
+        System.out.println("Posortowanie po dacie: ASC");
+        uc.sortByBirthdate();
         uc.getAllUsers();
     }
 }
